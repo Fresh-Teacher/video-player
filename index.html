@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player</title>
+    <style>
+        /* Custom styles for the video player */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        .custom-controls {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="videoPlayer" controls>
+            <source src="https://www.dropbox.com/scl/fi/o0ptd4z5ti2oj6h9f42ds/MONOLITH-VJ-JUNIOR.mp4?rlkey=sjogcgd9irbyq0e7m6fceoh5n&raw=1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="custom-controls">
+            <button onclick="togglePlayPause()">Play/Pause</button>
+            <button onclick="skip(-10)">-10s</button>
+            <button onclick="skip(10)">+10s</button>
+        </div>
+    </div>
+
+    <script>
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        function togglePlayPause() {
+            if (videoPlayer.paused || videoPlayer.ended) {
+                videoPlayer.play();
+            } else {
+                videoPlayer.pause();
+            }
+        }
+
+        function skip(seconds) {
+            videoPlayer.currentTime += seconds;
+        }
+    </script>
+</body>
+</html>
